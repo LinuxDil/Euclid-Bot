@@ -2,6 +2,8 @@ require('dotenv').config();
 const axios = require('axios');
 const ethers = require('ethers');
 const readline = require('readline');
+const figlet = require('figlet');
+const gradient = require('gradient-string');
 
 const colors = {
   reset: '\x1b[0m',
@@ -13,6 +15,18 @@ const colors = {
   bold: '\x1b[1m'
 };
 
+const bannerText = figlet.textSync('EUCLID BOT', {
+  font: 'Standard', // Ganti font di sini jika mau
+  horizontalLayout: 'default',
+  verticalLayout: 'default',
+});
+
+const bannerLines = bannerText.split('\n');
+const maxLength = Math.max(...bannerLines.map(line => line.length));
+const subText = '-Airdrop Seeker-';
+const paddingLeft = Math.floor((maxLength - subText.length) / 2);
+const paddedSubText = ' '.repeat(paddingLeft) + gradient.fruit.multiline(subText);
+
 const logger = {
   info: (msg) => console.log(`${colors.green}[✓] ${msg}${colors.reset}`),
   warn: (msg) => console.log(`${colors.yellow}[⚠] ${msg}${colors.reset}`),
@@ -20,12 +34,10 @@ const logger = {
   success: (msg) => console.log(`${colors.green}[✅] ${msg}${colors.reset}`),
   loading: (msg) => console.log(`${colors.cyan}[⟳] ${msg}${colors.reset}`),
   step: (msg) => console.log(`${colors.white}[➤] ${msg}${colors.reset}`),
-  banner: () => {
-    console.log(`${colors.cyan}${colors.bold}`);
-    console.log(`-------------------------------------------------`);
-    console.log(`   Euclid Testnet Auto Bot - Airdrop Insiders`);
-    console.log(`-------------------------------------------------${colors.reset}`);
-    console.log();
+    banner: () => {
+    console.log(gradient.fruit.multiline(bannerText));
+    console.log(paddedSubText);
+    console.log(('Powered by Vikitoshi'));  // tulisan kecil di bawah
   }
 };
 
