@@ -15,7 +15,7 @@ const colors = {
   bold: '\x1b[1m'
 };
 
-const bannerText = figlet.textSync('EUCLID BOT', {
+const bannerText = figlet.textSync('AIRDROP SEEKER', {
   font: 'Standard', // Ganti font di sini jika mau
   horizontalLayout: 'default',
   verticalLayout: 'default',
@@ -23,7 +23,7 @@ const bannerText = figlet.textSync('EUCLID BOT', {
 
 const bannerLines = bannerText.split('\n');
 const maxLength = Math.max(...bannerLines.map(line => line.length));
-const subText = '-Airdrop Seeker-';
+const subText = '-EUCLID AUTO BOT-';
 const paddingLeft = Math.floor((maxLength - subText.length) / 2);
 const paddedSubText = ' '.repeat(paddingLeft) + gradient.fruit.multiline(subText);
 
